@@ -1,1 +1,50 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIP Calculator India | Free Finance Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calc-container">
+        <h1>🇮🇳 SIP & FD Calculator</h1>
+        <p>Calculate Mutual Funds, FD, RD Returns</p>
+        
+        <div class="input-group">
+            <label>Initial Investment (₹)</label>
+            <input type="number" id="principal" placeholder="100000" value="100000">
+        </div>
+        
+        <div class="input-group">
+            <label>Monthly SIP (₹) <span class="optional">(optional)</span></label>
+            <input type="number" id="sip" placeholder="5000" value="5000">
+        </div>
+        
+        <div class="input-group">
+            <label>Expected Return %</label>
+            <select id="rate">
+                <option value="6.7">FD 6.7%</option>
+                <option value="7.2" selected>RBI Bond 7.2%</option>
+                <option value="7.5">Post Office 7.5%</option>
+                <option value="12">Equity MF 12%</option>
+                <option value="15">Nifty 15%</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label>Time Period</label>
+            <input type="number" id="years" placeholder="10" value="10"> Years
+        </div>
+        
+        <button onclick="calculate()">Calculate Returns</button>
+        <div id="result" class="result"></div>
+        
+        <div class="share">
+            <p>Share: <a href="https://wa.me/?text=Check this SIP Calculator https://yourusername.github.io/ci-calculator-india" target="_blank">WhatsApp</a></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
