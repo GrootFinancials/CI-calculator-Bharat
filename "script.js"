@@ -1,0 +1,41 @@
+function calculate() {
+    const p = parseFloat(document.getElementById('principal').value) || 0;
+    const sip = parseFloat(document.getElementById('sip').value) || 0;
+    const r = parseFloat(document.getElementById('rate').value) / 100;
+    const t = parseFloat(document.getElementById('years').value) || 0;
+    
+    if (!p && !sip) {
+        document.getElementById('result').innerHTML = 'Enter Principal OR SIP';
+        return;
+    }
+    
+    let amount = 0;
+    let totalInvested = 0;
+    
+    // Principal compound interest
+    if (p > 0) {
+        amount = p * Math.pow(1 + r/12, 12*t);
+        totalInvested += p;
+    }
+    
+    // SIP calculation
+    if (sip > 0) {
+        const months = t * 12;
+        const monthlyRate = r / 12;
+        const sipAmount = sip * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+        amount += sipAmount;
+        totalInvested += sip * months;
+    }
+    
+    const gains = amount - totalInvested;
+    
+    document.getElementById('result').innerHTML = `
+        <div style="font-size: 28px; margin-bottom: 10px;">
+            ₹${Math.round(amount).toLocaleString('en-IN')}
+        </div>
+        <div style="font-size: 14px; opacity: 0.9;">
+            Invested: ₹${Math.round(totalInvested).toLocaleString('en-IN')} | 
+            Profit: ₹${Math.round(gains).toLocaleString('en-IN')}
+        </div>
+    `;
+}
